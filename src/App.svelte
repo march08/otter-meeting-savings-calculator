@@ -137,13 +137,20 @@
     padding-bottom: 3em;
   }
   .ott {
-    box-sizing: border-box;
-    position: relative;
-    * {
-      box-sizing: border-box;
-      margin: 0;
-    }
     &-calculator {
+      box-sizing: border-box;
+      position: relative;
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      font-family: "Averta Std", -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+      button {
+        font-family: "Averta Std", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+      }
+
       --primary: #007aff;
       --secondary: #0060c8;
       --radius: 24px;
