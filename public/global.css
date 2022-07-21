@@ -1,0 +1,80 @@
+@font-face {
+  font-family: "Averta Std";
+  src: url("https://assets.website-files.com/618e9316785b3582a5178502/618fccc268034f13e1941cf4_AvertaStd-Regular.ttf")
+    format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Averta Std";
+  src: url("https://assets.website-files.com/618e9316785b3582a5178502/618fccc268034fe8d8941cf5_AvertaStd-RegularItalic.ttf")
+    format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Averta Std";
+  src: url("https://assets.website-files.com/618e9316785b3582a5178502/618fccc2539c5e6fac90018d_AvertaStd-SemiboldItalic.ttf")
+    format("truetype");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Averta Std";
+  src: url("https://assets.website-files.com/618e9316785b3582a5178502/618fccc28fa52f5113804eae_AvertaStd-Semibold.ttf")
+    format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Averta Std";
+  src: url("https://assets.website-files.com/618e9316785b3582a5178502/618fccc2c9396fa676ee814c_AvertaStd-Black.ttf")
+    format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Averta Std";
+  src: url("https://assets.website-files.com/618e9316785b3582a5178502/618fccc20a1b03f2f174f18d_AvertaStd-BlackItalic.ttf")
+    format("truetype");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+html,
+body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  color: #333;
+  margin: 0;
+  padding: 8px;
+  box-sizing: border-box;
+  font-family: "Averta Std", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+a {
+  color: rgb(0, 100, 200);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:visited {
+  color: rgb(0, 80, 160);
+}
+
+label {
+  display: block;
+}
