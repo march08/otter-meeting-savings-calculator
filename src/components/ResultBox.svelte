@@ -1,15 +1,10 @@
 <script lang="ts">
-  import { calcStore } from "./calcStore";
+  import { calcStore } from "../calcStore";
+  import { calculateTotalCostFromState } from "../utils/calculateTotalCosts";
 
   let value = 0;
-
   calcStore.subscribe((state) => {
-    if (state.attendeeCount > 0) {
-      const salariesTotal = state.salaries.reduce((res, next) => {
-        return res + (next || 0);
-      }, 0);
-      value = ((1.4 * state.duration * 60) / 124800) * salariesTotal;
-    }
+    value = calculateTotalCostFromState(state);
   });
 </script>
 

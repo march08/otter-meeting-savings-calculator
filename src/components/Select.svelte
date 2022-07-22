@@ -13,7 +13,7 @@
   {#if label}
     <div class="ott-select__label">{label}</div>
   {/if}
-  <div class="ott-select__valueContainer">
+  <button type="button" class="ott-select__button">
     {#if displayValue}
       <div class="ott-select__value">
         {displayValue}
@@ -23,10 +23,10 @@
         {placeholder}
       </div>
     {/if}
-    <button type="button" class="ott-select__button">
+    <div class="chevron-wrapper">
       <div class="chevron bottom" />
-    </button>
-  </div>
+    </div>
+  </button>
   <div class="ott-select__options">
     {#each options as option}
       <button
@@ -50,9 +50,10 @@
     &__label {
       padding-bottom: 0.5em;
     }
-    &__valueContainer {
+    &__button {
       background: white;
       border: none;
+      width: 100%;
       border-radius: 24px;
       height: 48px;
       display: flex;
@@ -60,22 +61,26 @@
       justify-content: space-between;
       padding: 0 4px 0 1.5rem;
       color: var(--text-primary);
+      background: white;
+      outline: none !important;
+      border: none !important;
+      font-size: 1em;
+      cursor: pointer;
+      .chevron {
+        transition: 0.2s all;
+      }
+      &:hover .chevron {
+        transform: scale(1.1);
+      }
     }
 
-    &__button {
-      background: transparent;
+    .chevron-wrapper {
       width: 42px;
       height: 42px;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 50%;
-      outline: none !important;
-      border: none !important;
-      cursor: pointer;
-      &:hover {
-        background: rgba(0, 0, 0, 0.05);
-      }
     }
 
     &__placeholder {
@@ -85,7 +90,7 @@
     &__options {
       position: absolute;
       z-index: 1000;
-      top: calc(100% + 0.5em);
+      top: calc(100% + 0.25em);
       right: 0;
       min-width: 100%;
       background: white;
@@ -113,7 +118,7 @@
         }
       }
     }
-    &__valueContainer:focus-within + &__options {
+    &__button:focus + &__options {
       opacity: 1;
       /* display: block; */
       visibility: visible;
