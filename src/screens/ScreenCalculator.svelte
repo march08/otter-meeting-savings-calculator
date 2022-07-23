@@ -1,13 +1,17 @@
 <script lang="ts">
   import { calcStore } from "../calcStore";
   import ResultBox from "../components/ResultBox.svelte";
-  import { salaryOptions } from "../options/salaryOptions";
+  import { getSalaryOptions } from "../options/salaryOptions";
   import Select from "../components/Select.svelte";
-  import { durationOptions } from "../options/durationOptions";
-  import { attendeeCountOptions } from "../options/attendeeCountOptions";
+  import { getDurationOptions } from "../options/durationOptions";
+  import { getAttendeeCountOptions } from "../options/attendeeCountOptions";
   import type { Config } from "../config";
   import { scrollToCalculator } from "../utils/scrollToCalculator";
   export let config: Config;
+
+  $: durationOptions = getDurationOptions(config.optionsDuration);
+  $: salaryOptions = getSalaryOptions(config.optionsSalaries);
+  $: attendeeCountOptions = getAttendeeCountOptions(config.optionsAttendees);
 </script>
 
 <div class="ott-calculator__content">

@@ -1,7 +1,6 @@
 <script lang="ts">
   import { calcStore } from "../calcStore";
   import type { Config } from "../config";
-  import { durationOptions } from "../options/durationOptions";
   import { calculateTotalCostFromState } from "../utils/calculateTotalCosts";
   import { formatUSD } from "../utils/formatUsd";
 

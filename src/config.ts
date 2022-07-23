@@ -1,3 +1,4 @@
+import type { DeepPartial } from "./types";
 import { hourMinutesFormatter } from "./utils/hourMinutesFormatter";
 
 export type Config = {
@@ -9,6 +10,10 @@ export type Config = {
   hrefHighCost: string;
   hrefLowCost: string;
   ctaCostThreshold: number;
+  // select options
+  optionsDuration: number[]; // hours
+  optionsSalaries: number[]; // in thousands
+  optionsAttendees: number[]; // number of attendees
   // copy
   copy: {
     ctaLowCost: string;
@@ -34,17 +39,22 @@ export type Config = {
   };
 };
 
+export type ConfigOptional = DeepPartial<Config>;
+
 export const defaultConfig: Config = {
   title: "Meeting cost calculator",
-
-  // end screen
   hrefHighCost: "https://otter.ai",
   hrefLowCost: "https://otter.ai",
   ctaCostThreshold: 50,
-
   benefitCoeficient: 1.4,
   workingHoursPerYear: 2080,
-
+  optionsAttendees: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+  optionsDuration: [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2],
+  optionsSalaries: [
+    10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 175, 200,
+    225, 250, 275, 300, 325, 350, 375, 400, 425, 450, 475, 500, 600, 700, 800,
+    900, 1000,
+  ],
   copy: {
     ctaLowCost: "Ottermazing! That’s time well spent",
     ctaHighCost: "That'll add up. Can you cut cost?",

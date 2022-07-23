@@ -3,11 +3,10 @@
   import { calcStore } from "./calcStore";
   import ScreenCalculator from "./screens/ScreenCalculator.svelte";
   import ScreenEnd from "./screens/ScreenEnd.svelte";
-  import { Config, defaultConfig } from "./config";
-  import type { DeepPartial } from "./types";
+  import { ConfigOptional, defaultConfig } from "./config";
   import ModalShare from "./screens/ModalShare.svelte";
 
-  export let options: DeepPartial<Config> = defaultConfig;
+  export let options: ConfigOptional = defaultConfig;
   $: config = {
     ...defaultConfig,
     ...options,
@@ -37,6 +36,7 @@
   .ott-calculator {
     box-sizing: border-box;
     position: relative;
+    z-index: 100;
     * {
       box-sizing: border-box;
       margin: 0;

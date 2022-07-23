@@ -1,9 +1,3 @@
-const salaries = [
-  10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 175, 200,
-  225, 250, 275, 300, 325, 350, 375, 400, 425, 450, 475, 500, 600, 700, 800,
-  900, 1000,
-];
-
 function nFormatter(num: number, digits: number = 1) {
   const lookup = [
     { value: 1, symbol: "" },
@@ -26,10 +20,11 @@ function nFormatter(num: number, digits: number = 1) {
     : "0";
 }
 
-export const salaryOptions = salaries.map((item) => {
-  const total = item * 1000;
-  return {
-    value: total,
-    label: `$${nFormatter(total)}`,
-  };
-});
+export const getSalaryOptions = (salaries: number[]) =>
+  salaries.map((item) => {
+    const total = item * 1000;
+    return {
+      value: total,
+      label: `$${nFormatter(total)}`,
+    };
+  });
