@@ -5,6 +5,7 @@ export type StoreValues = {
   attendeeCount: number;
   salaries: (number | null)[];
   screen: "CALCULATOR" | "END";
+  displayShareModal: boolean;
 };
 
 export const initVal: StoreValues = {
@@ -12,6 +13,7 @@ export const initVal: StoreValues = {
   attendeeCount: 0,
   salaries: [],
   screen: "CALCULATOR",
+  displayShareModal: false,
 };
 
 export const calcStore = writable(initVal);

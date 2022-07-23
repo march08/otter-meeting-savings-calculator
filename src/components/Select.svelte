@@ -52,6 +52,7 @@
     }
     &__button {
       background: white;
+      font-weight: 600;
       border: none;
       width: 100%;
       border-radius: 24px;
@@ -97,7 +98,7 @@
       border-radius: 24px;
       padding: 1em 0;
       box-shadow: 0px 9.69389px 31.5051px rgb(130 148 165 / 38%);
-      max-height: 25vh;
+      max-height: 33vh;
       overflow-x: auto;
       opacity: 0;
       visibility: hidden;

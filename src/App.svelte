@@ -5,6 +5,7 @@
   import ScreenEnd from "./screens/ScreenEnd.svelte";
   import { Config, defaultConfig } from "./config";
   import type { DeepPartial } from "./types";
+  import ModalShare from "./screens/ModalShare.svelte";
 
   export let options: DeepPartial<Config> = defaultConfig;
   $: config = {
@@ -17,18 +18,19 @@
   };
 </script>
 
-<div class="ott-calculator">
+<div class="ott-calculator" id="ott-meeting-cost-calculator">
   <div class="ott-calculator-header ">
     <LogoSvg class="ott-calculator-logo" />
-    <div>{config.title}</div>
+    <div class="ott-calculator-title">{config.title}</div>
   </div>
-  <div class="ott-calculator__content">
-    {#if $calcStore.screen === "END"}
-      <ScreenEnd {config} />
-    {:else}
-      <ScreenCalculator />
-    {/if}
-  </div>
+  {#if $calcStore.screen === "END"}
+    <ScreenEnd {config} />
+  {:else}
+    <ScreenCalculator {config} />
+  {/if}
+  {#if $calcStore.displayShareModal}
+    <ModalShare {config} />
+  {/if}
 </div>
 
 <style lang="scss" global>
@@ -54,11 +56,25 @@
     --text-secondary: #8294a5;
     background: var(--primary);
     border-radius: var(--radius);
-    padding: 60px;
+    padding: 3.5em;
     color: white;
     font-weight: 400;
     font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+    & > * {
+      width: 100%;
+    }
 
+    @media screen and (max-width: 575px) {
+      padding: 2em;
+      gap: 2em;
+    }
+
+    .ott-calculator-title {
+      text-align: right;
+    }
     .ott-button {
       border-radius: 24px;
       display: flex;
@@ -67,7 +83,9 @@
       outline: none !important;
       border: none !important;
       font-size: 1em;
-      padding: 0 2.6em;
+      padding: 0 1.5em;
+      line-height: 1em;
+      text-align: center;
       cursor: pointer;
       background: white;
       color: var(--primary);
@@ -105,7 +123,6 @@
       display: flex;
       justify-content: space-between;
       gap: 2em;
-      padding-bottom: 3em;
     }
 
     .ott-calculator-footer {
@@ -113,13 +130,31 @@
       flex-direction: column;
       align-items: center;
       gap: 1em;
+      .footer-note {
+        text-align: center;
+      }
     }
     .ott-calculator__content {
       max-width: 625px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
+      opacity: 0;
+      animation: ottfadein 0.3s forwards;
+      animation-delay: 0.1s;
       gap: 3rem;
+      @media screen and (max-width: 575px) {
+        gap: 1.5em;
+      }
+    }
+  }
+
+  @keyframes ottfadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
     }
   }
 </style>
