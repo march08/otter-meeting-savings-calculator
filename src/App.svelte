@@ -76,10 +76,10 @@
       text-align: right;
     }
     .ott-button {
-      border-radius: 24px;
+      border-radius: 27px;
       display: flex;
       align-items: center;
-      height: 48px;
+      height: 54px;
       outline: none !important;
       border: none !important;
       font-size: 1em;

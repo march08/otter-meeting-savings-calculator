@@ -1,34 +1,67 @@
 <script lang="ts">
   import { calcStore } from "../calcStore";
   import ResultBox from "../components/ResultBox.svelte";
-  import { calculateTotalCostFromState } from "../utils/calculateTotalCosts";
   import type { Config } from "../config";
   import Facebook from "../assets/Facebook.svelte";
   import Linkedin from "../assets/Linkedin.svelte";
   import Twitter from "../assets/Twitter.svelte";
   import Email from "../assets/Email.svelte";
+  import { calculateTotalCostFromState } from "../utils/calculateTotalCosts";
+  import { formatUSD } from "../utils/formatUsd";
+  import ExternalLink from "../components/ExternalLink.svelte";
 
   export let config: Config;
+
+  let amountSpent = 0;
+  calcStore.subscribe((state) => {
+    amountSpent = calculateTotalCostFromState(state, config);
+  });
+  $: shareMessage = config.copy.shareMessage({
+    amountSpent,
+    amountSpentFormatted: formatUSD(amountSpent),
+  });
 </script>
 
 <div class="ott-modal-overlay">
   <div class="ott-modal">
     <ResultBox {config} primary={true} showTitle />
     <div class="ott-modal__content">
-      <p>Share this tool</p>
+      <p>{config.copy.shareTitle}</p>
       <div class="ott-share-buttons">
-        <a class="ott-share-btn">
+        <ExternalLink
+          class="ott-share-btn"
+          href={`https://www.facebook.com/sharer/sharer.php?quote=${encodeURIComponent(
+            shareMessage
+          )}&u=${encodeURIComponent(config.copy.shareUrlFacebook)}`}
+        >
           <Facebook />
-        </a>
-        <a class="ott-share-btn">
-          <Linkedin />
-        </a>
-        <a class="ott-share-btn">
+        </ExternalLink>
+        <ExternalLink
+          class="ott-share-btn"
+          href={`https://twitter.com/share?text=${encodeURIComponent(
+            shareMessage
+          )}&url=${encodeURIComponent(config.copy.shareUrlTwitter)}`}
+        >
           <Twitter />
-        </a>
-        <a class="ott-share-btn email">
+        </ExternalLink>
+        <ExternalLink
+          class="ott-share-btn"
+          href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+            config.copy.shareUrlLinkedin
+          )}`}
+        >
+          <Linkedin />
+        </ExternalLink>
+        <ExternalLink
+          href={`mailto:?subject=${encodeURIComponent(
+            config.copy.shareEmailSubjet
+          )}&body=${encodeURIComponent(shareMessage)}
+          %0D%0A%0D%0A
+${encodeURIComponent(config.copy.shareUrlEmail)}`}
+          class="ott-share-btn email"
+        >
           <Email />
-        </a>
+        </ExternalLink>
       </div>
 
       <p
@@ -40,7 +73,7 @@
           }));
         }}
       >
-        Close
+        {config.copy.shareClose}
       </p>
     </div>
   </div>

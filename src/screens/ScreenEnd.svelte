@@ -36,7 +36,7 @@
             }));
           }}
         >
-          {config.copy.shareButton}
+          {config.copy.endShareButton}
         </button>
       </div>
       <p
@@ -48,7 +48,7 @@
           }));
         }}
       >
-        Calculate again
+        {config.copy.endCalcAgain}
       </p>
     </div>
   {/if}

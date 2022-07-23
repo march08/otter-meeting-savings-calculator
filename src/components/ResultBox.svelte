@@ -1,7 +1,9 @@
 <script lang="ts">
   import { calcStore } from "../calcStore";
   import type { Config } from "../config";
+  import { durationOptions } from "../options/durationOptions";
   import { calculateTotalCostFromState } from "../utils/calculateTotalCosts";
+  import { formatUSD } from "../utils/formatUsd";
 
   export let config: Config;
   export let primary: boolean = false;
@@ -14,20 +16,16 @@
 
 <div class="ott-result-box" class:primary>
   {#if showTitle}
-    <p class="title">Guess how much we are spending on this meeting?</p>
+    <p class="title">{config.copy.resultTitle}</p>
   {/if}
   <div class="ott-result-value">
-    {Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-      currencyDisplay: "symbol",
-    }).format(value)}
+    {formatUSD(value)}
   </div>
   <div class="ott-result-desc">
-    {$calcStore.duration * 60} mins
-    {#if $calcStore.attendeeCount > 0}
-      {"- "} {$calcStore.attendeeCount} attendees
-    {/if}
+    {config.copy.resultInputSummary(
+      $calcStore.duration,
+      $calcStore.attendeeCount
+    )}
   </div>
 </div>
 
@@ -37,6 +35,9 @@
       background: var(--secondary);
       border-radius: var(--radius);
       padding: 2em;
+      @media screen and (max-width: 575px) {
+        padding: 1.5em;
+      }
       color: white;
       text-align: center;
       width: 100%;

@@ -57,7 +57,7 @@
       {#each $calcStore.salaries as salary, index}
         <div class="ott-calculator-attendees__item">
           <div class="title">
-            Estimate salary #{index + 1}
+            {config.copy.calculatorSalaryItem(index)}
           </div>
           <Select
             value={salary}
@@ -90,11 +90,11 @@
           }));
         }}
       >
-        Estimate my meeting cost
+        {config.copy.calculatorCtaEstimate}
       </button>
       {#if config.benefitCoeficient !== 1}
         <p class="footer-note">
-          Salaries multiplied by {config.benefitCoeficient} to account for benefits
+          {config.copy.calculatorCoeficientNote(config.benefitCoeficient)}
         </p>
       {/if}
     </div>
