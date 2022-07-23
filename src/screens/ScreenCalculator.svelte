@@ -76,7 +76,7 @@
                 };
               });
             }}
-            placeholder="Unknown"
+            placeholder="0"
             options={salaryOptions}
           />
         </div>

@@ -1,20 +1,46 @@
 <script lang="ts">
   import LogoSvg from "./assets/logo-otter.svg";
-  import { calcStore } from "./calcStore";
+  import { calcStore, initVal } from "./calcStore";
   import ScreenCalculator from "./screens/ScreenCalculator.svelte";
   import ScreenEnd from "./screens/ScreenEnd.svelte";
   import { ConfigOptional, defaultConfig } from "./config";
   import ModalShare from "./screens/ModalShare.svelte";
 
   export let options: ConfigOptional = defaultConfig;
-  $: config = {
+
+  /**
+   * initialize config
+   */
+
+  const config = {
     ...defaultConfig,
     ...options,
     copy: {
       ...defaultConfig.copy,
-      ...options.copy,
+      ...options?.copy,
+    },
+    initialValues: {
+      ...defaultConfig.initialValues,
+      ...options?.initialValues,
     },
   };
+
+  /**
+   * initialize app state
+   */
+
+  const initSalaries: number[] = [];
+  const initAttendeesCount = config.initialValues.attendeeCount || 0;
+
+  for (let i = 0; i < initAttendeesCount; i += 1) {
+    initSalaries[i] = config.defaultSalary;
+  }
+
+  calcStore.set({
+    ...initVal,
+    ...config.initialValues,
+    salaries: initSalaries,
+  });
 </script>
 
 <div class="ott-calculator" id="ott-meeting-cost-calculator">

@@ -95,7 +95,12 @@ OtterMeetingCostCalculator("otter-meeting-calculator", config);
 What can be configured?
 
 ```typescript
-type Config = {
+export type Config = {
+  initialValues: {
+    duration: number; // hours
+    attendeeCount: number; // number
+  };
+  defaultSalary: number;
   title: string;
   // calculations
   benefitCoeficient: number;

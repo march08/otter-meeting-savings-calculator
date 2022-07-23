@@ -1,7 +1,13 @@
+import { initVal, StoreValues } from "./calcStore";
 import type { DeepPartial } from "./types";
 import { hourMinutesFormatter } from "./utils/hourMinutesFormatter";
 
 export type Config = {
+  initialValues: {
+    duration: number; // hours
+    attendeeCount: number; // number
+  };
+  defaultSalary: number;
   title: string;
   // calculations
   benefitCoeficient: number;
@@ -42,6 +48,11 @@ export type Config = {
 export type ConfigOptional = DeepPartial<Config>;
 
 export const defaultConfig: Config = {
+  initialValues: {
+    duration: 0.25,
+    attendeeCount: 0,
+  },
+  defaultSalary: 40000,
   title: "Meeting cost calculator",
   hrefHighCost: "https://otter.ai",
   hrefLowCost: "https://otter.ai",
