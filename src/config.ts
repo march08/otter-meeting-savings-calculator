@@ -58,7 +58,7 @@ export const defaultConfig: Config = {
   copy: {
     ctaLowCost: "Ottermazing! That’s time well spent",
     ctaHighCost: "That'll add up. Can you cut cost?",
-    endShareButton: "Share this meeting costs",
+    endShareButton: "Share this meeting cost",
     endCalcAgain: "Calculate again",
     calculatorCtaEstimate: "Estimate my meeting cost",
     calculatorSalaryItem: (index) => `Estimate salary #${index + 1}`,
