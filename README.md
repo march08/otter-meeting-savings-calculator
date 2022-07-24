@@ -115,12 +115,12 @@ export type Config = {
   optionsAttendees: number[]; // number of attendees
   // copy
   copy: {
-    ctaLowCost: string;
-    ctaHighCost: string;
+    endCtaLowerCost: string;
+    endCtaHigherCost: string;
     endShareButton: string;
     endCalcAgain: string;
     calculatorCtaEstimate: string;
-    calculatorSalaryItem: (index: number) => string;
+    calculatorSalaryItemLabel: (index: number) => string;
     calculatorCoeficientNote: (coeficient: number) => string;
     shareTitle: string;
     shareClose: string;

@@ -22,12 +22,12 @@ export type Config = {
   optionsAttendees: number[]; // number of attendees
   // copy
   copy: {
-    ctaLowCost: string;
-    ctaHighCost: string;
+    endCtaLowerCost: string;
+    endCtaHigherCost: string;
     endShareButton: string;
     endCalcAgain: string;
     calculatorCtaEstimate: string;
-    calculatorSalaryItem: (index: number) => string;
+    calculatorSalaryItemLabel: (index: number) => string;
     calculatorCoeficientNote: (coeficient: number) => string;
     shareTitle: string;
     shareClose: string;
@@ -67,12 +67,12 @@ export const defaultConfig: Config = {
     900, 1000,
   ],
   copy: {
-    ctaLowCost: "Ottermazing! That’s time well spent",
-    ctaHighCost: "That'll add up. Can you cut cost?",
+    endCtaLowerCost: "Ottermazing! That’s time well spent",
+    endCtaHigherCost: "That'll add up. Can you cut cost?",
     endShareButton: "Share this meeting cost",
     endCalcAgain: "Calculate again",
     calculatorCtaEstimate: "Estimate my meeting cost",
-    calculatorSalaryItem: (index) => `Estimate salary #${index + 1}`,
+    calculatorSalaryItemLabel: (index) => `Estimate salary #${index + 1}`,
     calculatorCoeficientNote: (coeficient) =>
       `Salaries multiplied by ${coeficient} to account for benefits`,
     shareTitle: "Share this tool",

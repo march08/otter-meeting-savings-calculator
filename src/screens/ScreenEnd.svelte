@@ -19,11 +19,11 @@
       <div class="ott-result-buttons">
         {#if totalCost > config.ctaCostThreshold}
           <a class="ott-button" href={config.hrefHighCost}>
-            {config.copy.ctaHighCost}
+            {config.copy.endCtaHigherCost}
           </a>
         {:else}
           <a class="ott-button" href={config.hrefLowCost}>
-            {config.copy.ctaLowCost}
+            {config.copy.endCtaLowerCost}
           </a>
         {/if}
         <button

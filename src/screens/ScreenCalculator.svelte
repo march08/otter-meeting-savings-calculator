@@ -61,7 +61,7 @@
       {#each $calcStore.salaries as salary, index}
         <div class="ott-calculator-attendees__item">
           <div class="title">
-            {config.copy.calculatorSalaryItem(index)}
+            {config.copy.calculatorSalaryItemLabel(index)}
           </div>
           <Select
             value={salary}
