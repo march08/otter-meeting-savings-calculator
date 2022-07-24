@@ -9,9 +9,9 @@
   import { scrollToCalculator } from "../utils/scrollToCalculator";
   export let config: Config;
 
-  $: durationOptions = getDurationOptions(config.optionsDuration);
-  $: salaryOptions = getSalaryOptions(config.optionsSalaries);
-  $: attendeeCountOptions = getAttendeeCountOptions(config.optionsAttendees);
+  const durationOptions = getDurationOptions(config.optionsDuration);
+  const salaryOptions = getSalaryOptions(config.optionsSalaries);
+  const attendeeCountOptions = getAttendeeCountOptions(config.optionsAttendees);
 </script>
 
 <div class="ott-calculator__content">
@@ -41,7 +41,7 @@
           let nextSalaries = [...state.salaries];
           if (attendeeCount > state.attendeeCount) {
             for (let i = state.attendeeCount; i < attendeeCount; i += 1) {
-              nextSalaries[i] = 40000;
+              nextSalaries[i] = config.defaultSalary;
             }
           } else {
             nextSalaries = nextSalaries.slice(0, attendeeCount);

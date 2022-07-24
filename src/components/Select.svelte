@@ -13,13 +13,12 @@
   $: displayValue = options.find((item) => item.value === value)?.label || null;
 
   let wrapperEl: HTMLDivElement;
-
   function castToHtmlElement(element: any) {
     return element as HTMLElement;
   }
 </script>
 
-<svelte:window
+<svelte:body
   on:click={(e) => {
     try {
       const clickedEl = castToHtmlElement(e.target);
@@ -28,8 +27,7 @@
         openState.set({ isOpen: false });
       }
     } catch {}
-  }}
-/>
+  }} />
 <div class="ott-select" bind:this={wrapperEl}>
   {#if label}
     <div class="ott-select__label">{label}</div>
