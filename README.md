@@ -32,7 +32,7 @@ We will need to build and compile the project first on your local machine:
 yarn build:embed
 ```
 
-New files will be created for each configurator, e.g. for empresa, these files will be created:
+Will build
 
 ```
 /public/umd
@@ -56,7 +56,7 @@ Include styles in `<head>`
 />
 ```
 
-To include empresa configurator on the website, create a div element with `id` in the desired location of the html.
+To include Calculator on the website, create a div element with `id` in the desired location of the html.
 
 ```html
 <div
