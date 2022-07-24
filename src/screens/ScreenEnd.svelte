@@ -67,15 +67,5 @@
     .calc-again {
       cursor: pointer;
     }
-    .ott-calculator {
-      &__selects {
-        display: flex;
-        gap: 1em;
-        & > * {
-          flex-grow: 1;
-          width: 1px;
-        }
-      }
-    }
   }
 </style>
