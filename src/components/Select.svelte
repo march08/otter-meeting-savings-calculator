@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { writable } from "svelte/store";
+
   type SelectVal = string | number;
   export let options: { value: SelectVal; label: string }[] = [];
   export let value: SelectVal | null = null;
@@ -6,14 +8,41 @@
   export let label: string = null;
   export let onSelectValue: (val: SelectVal) => void;
 
+  const openState = writable({ isOpen: false });
+
   $: displayValue = options.find((item) => item.value === value)?.label || null;
+
+  let wrapperEl: HTMLDivElement;
+
+  function castToHtmlElement(element: any) {
+    return element as HTMLElement;
+  }
 </script>
 
-<div class="ott-select">
+<svelte:window
+  on:click={(e) => {
+    try {
+      const clickedEl = castToHtmlElement(e.target);
+      const isClickOutside = !wrapperEl.contains(clickedEl);
+      if (isClickOutside) {
+        openState.set({ isOpen: false });
+      }
+    } catch {}
+  }}
+/>
+<div class="ott-select" bind:this={wrapperEl}>
   {#if label}
     <div class="ott-select__label">{label}</div>
   {/if}
-  <button type="button" class="ott-select__button">
+  <button
+    type="button"
+    class="ott-select__button"
+    on:click={() => {
+      openState.update((s) => ({
+        isOpen: !s.isOpen,
+      }));
+    }}
+  >
     {#if displayValue}
       <div class="ott-select__value">
         {displayValue}
@@ -27,12 +56,13 @@
       <div class="chevron bottom" />
     </div>
   </button>
-  <div class="ott-select__options">
+  <div class="ott-select__options" class:is-open={$openState.isOpen}>
     {#each options as option}
       <button
         type="button"
-        on:click={(e) => {
+        on:click={() => {
           onSelectValue(option.value);
+          openState.set({ isOpen: false });
         }}
       >
         {option.label}
@@ -119,7 +149,7 @@
         }
       }
     }
-    &__button:focus + &__options {
+    &__options.is-open {
       opacity: 1;
       /* display: block; */
       visibility: visible;
