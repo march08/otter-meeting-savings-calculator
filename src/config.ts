@@ -29,6 +29,7 @@ export type Config = {
     calculatorCtaEstimate: string;
     calculatorSalaryItemLabel: (index: number) => string;
     calculatorCoeficientNote: (coeficient: number) => string;
+    calculatorShareCta: string;
     shareTitle: string;
     shareClose: string;
     shareUrlFacebook: string;
@@ -71,6 +72,7 @@ export const defaultConfig: Config = {
     endCtaHigherCost: "That'll add up. Can you cut cost?",
     endShareButton: "Share this meeting cost",
     endCalcAgain: "Calculate again",
+    calculatorShareCta: "Share this tool",
     calculatorCtaEstimate: "Estimate my meeting cost",
     calculatorSalaryItemLabel: (index) => `Estimate salary #${index + 1}`,
     calculatorCoeficientNote: (coeficient) =>
@@ -78,6 +80,9 @@ export const defaultConfig: Config = {
     shareTitle: "Share this tool",
     shareClose: "Close",
     shareMessage: (props) => {
+      if (!props.amountSpent) {
+        return "How much are you spending on meetings? Find out with the Meeting Cost Calculator from @otter_ai ";
+      }
       return `Guess how much we’re spending on this meeting? ${props.amountSpentFormatted} @otter_ai`;
     },
     shareUrlFacebook:
@@ -89,7 +94,7 @@ export const defaultConfig: Config = {
     shareEmailSubjet: "We can save on money on meetings with Otter.ai",
     shareUrlEmail:
       "https://otter.ai/estimate-the-cost-of-a-meeting-with-this-calculator?utm_source=email",
-    resultTitle: "Guess how much we are spending on this meeting?",
+    resultTitle: "How much are you spending on meetings?",
     resultInputSummary: (hours, attendees) => {
       const res = [];
       if (hours) {

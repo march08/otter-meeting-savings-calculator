@@ -102,6 +102,21 @@
         </p>
       {/if}
     </div>
+  {:else}
+    <div class="ott-calculator-footer">
+      <button
+        type="button"
+        class="ott-button secondary sm"
+        on:click={() => {
+          calcStore.update((s) => ({
+            ...s,
+            displayShareModal: true,
+          }));
+        }}
+      >
+        {config.copy.calculatorShareCta}
+      </button>
+    </div>
   {/if}
 </div>
 

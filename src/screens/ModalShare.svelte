@@ -24,7 +24,7 @@
 
 <div class="ott-modal-overlay">
   <div class="ott-modal">
-    <ResultBox {config} primary={true} showTitle />
+    <ResultBox {config} primary={true} showTitle hideIfZero={true} />
     <div class="ott-modal__content">
       <p>{config.copy.shareTitle}</p>
       <div class="ott-share-buttons">

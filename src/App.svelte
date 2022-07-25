@@ -109,7 +109,7 @@
       outline: none !important;
       border: none !important;
       font-size: 1em;
-      padding: 0 1.5em;
+      padding: 0 2em;
       line-height: 1em;
       text-align: center;
       cursor: pointer;
@@ -136,6 +136,10 @@
         border-radius: 32px;
         padding: 0 2em;
         font-size: 1.25em;
+      }
+      &.sm {
+        height: 42px;
+        border-radius: 21px;
       }
     }
 

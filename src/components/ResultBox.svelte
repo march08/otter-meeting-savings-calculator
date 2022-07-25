@@ -7,26 +7,31 @@
   export let config: Config;
   export let primary: boolean = false;
   export let showTitle: boolean = false;
+  export let hideIfZero: boolean = false;
   let value = 0;
   calcStore.subscribe((state) => {
     value = calculateTotalCostFromState(state, config);
   });
 </script>
 
-<div class="ott-result-box" class:primary>
-  {#if showTitle}
-    <p class="title">{config.copy.resultTitle}</p>
-  {/if}
-  <div class="ott-result-value">
-    {formatUSD(value)}
+{#if hideIfZero && value === 0}
+  {""}
+{:else}
+  <div class="ott-result-box" class:primary>
+    {#if showTitle}
+      <p class="title">{config.copy.resultTitle}</p>
+    {/if}
+    <div class="ott-result-value">
+      {formatUSD(value)}
+    </div>
+    <div class="ott-result-desc">
+      {config.copy.resultInputSummary(
+        $calcStore.duration,
+        $calcStore.attendeeCount
+      )}
+    </div>
   </div>
-  <div class="ott-result-desc">
-    {config.copy.resultInputSummary(
-      $calcStore.duration,
-      $calcStore.attendeeCount
-    )}
-  </div>
-</div>
+{/if}
 
 <style lang="scss" global>
   .ott {
