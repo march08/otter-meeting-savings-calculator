@@ -75,7 +75,6 @@
   }
   .ott-select {
     position: relative;
-    z-index: 500;
     &__label {
       padding-bottom: 0.5em;
     }

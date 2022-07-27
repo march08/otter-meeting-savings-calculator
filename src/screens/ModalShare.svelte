@@ -83,6 +83,7 @@
 <style lang="scss" global>
   .ott-calculator {
     &.ott-modal-overlay {
+      border-radius: 0 !important;
       animation: ottfadein 0.2s;
       position: fixed;
       z-index: 10000;
