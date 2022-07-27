@@ -9,6 +9,7 @@
   import { calculateTotalCostFromState } from "../utils/calculateTotalCosts";
   import { formatUSD } from "../utils/formatUsd";
   import ExternalLink from "../components/ExternalLink.svelte";
+  import { portal } from "svelte-portal";
 
   export let config: Config;
 
@@ -22,7 +23,7 @@
   });
 </script>
 
-<div class="ott-modal-overlay">
+<div use:portal={"body"} class="ott-calculator ott-modal-overlay">
   <div class="ott-modal">
     <ResultBox {config} primary={true} showTitle hideIfZero={true} />
     <div class="ott-modal__content">
@@ -56,8 +57,8 @@
           href={`mailto:?subject=${encodeURIComponent(
             config.copy.shareEmailSubjet
           )}&body=${encodeURIComponent(shareMessage)}
-          %0D%0A%0D%0A
-${encodeURIComponent(config.copy.shareUrlEmail)}`}
+            %0D%0A%0D%0A
+  ${encodeURIComponent(config.copy.shareUrlEmail)}`}
           class="ott-share-btn email"
         >
           <Email />
@@ -81,7 +82,7 @@ ${encodeURIComponent(config.copy.shareUrlEmail)}`}
 
 <style lang="scss" global>
   .ott-calculator {
-    .ott-modal-overlay {
+    &.ott-modal-overlay {
       animation: ottfadein 0.2s;
       position: fixed;
       z-index: 10000;
