@@ -59,5 +59,8 @@
       font-weight: 600;
       font-size: 2.5em;
     }
+    &-result-desc {
+      font-weight: 600;
+    }
   }
 </style>

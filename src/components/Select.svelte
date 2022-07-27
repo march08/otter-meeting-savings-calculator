@@ -75,6 +75,7 @@
   }
   .ott-select {
     position: relative;
+    z-index: 500;
     &__label {
       padding-bottom: 0.5em;
     }
@@ -88,7 +89,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 4px 0 1.5rem;
+      padding: 0 4px 0 1.5em;
       color: var(--text-primary);
       background: white;
       outline: none !important;
@@ -104,8 +105,9 @@
     }
 
     .chevron-wrapper {
-      width: 42px;
-      height: 42px;
+      padding-top: 2px;
+      width: 48px;
+      height: 48px;
       display: flex;
       align-items: center;
       justify-content: center;

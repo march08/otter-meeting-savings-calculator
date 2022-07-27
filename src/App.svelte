@@ -61,8 +61,6 @@
 <style lang="scss" global>
   .ott-calculator {
     box-sizing: border-box;
-    position: relative;
-    z-index: 100;
     * {
       box-sizing: border-box;
       margin: 0;
@@ -84,7 +82,7 @@
     border-radius: var(--radius);
     padding: 3.5em;
     color: white;
-    font-weight: 400;
+    font-weight: 600;
     font-size: 16px;
     display: flex;
     flex-direction: column;
@@ -100,6 +98,7 @@
 
     .ott-calculator-title {
       text-align: right;
+      font-weight: 600;
     }
     .ott-button {
       border-radius: 27px;
@@ -140,6 +139,7 @@
       &.sm {
         height: 42px;
         border-radius: 21px;
+        font-size: 0.875em;
       }
     }
 
@@ -172,7 +172,7 @@
       opacity: 0;
       animation: ottfadein 0.3s forwards;
       animation-delay: 0.1s;
-      gap: 3rem;
+      gap: 3em;
       @media screen and (max-width: 575px) {
         gap: 1.5em;
       }

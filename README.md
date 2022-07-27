@@ -65,7 +65,7 @@ To include Calculator on the website, create a div element with `id` in the desi
 ></div>
 ```
 
-At the end of `<body>`, include this script, make sure to edit the config:
+At the end of `<body>`, include this script:
 
 ```html
 <!-- calculator -->
