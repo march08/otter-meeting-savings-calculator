@@ -3,6 +3,6 @@ export const formatUSD = (value: number) => {
     style: "currency",
     currency: "USD",
     currencyDisplay: "symbol",
-    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
   }).format(value);
 };
