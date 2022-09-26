@@ -82,7 +82,7 @@
         </div>
       {/each}
     </div>
-    <div class="ott-calculator-footer">
+    <!-- <div class="ott-calculator-footer">
       <button
         type="button"
         class="ott-button lg secondary"
@@ -101,8 +101,8 @@
           {config.copy.calculatorCoeficientNote(config.benefitCoeficient)}
         </p>
       {/if}
-    </div>
-  {:else}
+    </div> -->
+    <!-- {:else}
     <div class="ott-calculator-footer">
       <button
         type="button"
@@ -116,7 +116,7 @@
       >
         {config.copy.calculatorShareCta}
       </button>
-    </div>
+    </div> -->
   {/if}
 </div>
 
